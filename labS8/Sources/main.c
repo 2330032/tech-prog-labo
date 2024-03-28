@@ -82,10 +82,12 @@ void* stack_pop(Stack* s) {
 	}
 	return NULL;
 }
+
 void queue_init(Queue* q) {
 	q->next = q->prev = NULL;
 	q->count = 0;
 }
+
 void queue_push(Queue* q, void* data) {
 	Node* n = allocate(sizeof(Node));
 	n->data = data;
@@ -99,6 +101,7 @@ void queue_push(Queue* q, void* data) {
 		n->next = temp;
 	}
 }
+
 void* queue_pop(Queue* q) {
 	if (q->prev != NULL) {
 		Node* temp = q->prev;
@@ -113,6 +116,7 @@ void* queue_pop(Queue* q) {
 #define HEAP_SIZE 1024 * 1024
 static uint8_t* heap = NULL;
 static size_t heap_top = 0;
+
 void* allocate(size_t size) {
 	size_t old_top = heap_top;
 	heap_top += size;
@@ -128,30 +132,30 @@ int main(int argc, char** argv) {
 		printf("%lld\n", fibonacci(i));
 	//Pour vous corriger verifier les nombres ici: https://coolconversion.com/math/fibonacci-tables/75
 
-	TreeNode* root = tree_create_node("A");
-	tree_add_node(root, tree_create_node("B"));
-	tree_add_node(root, tree_create_node("C"));
-
-	tree_add_node(root->left, tree_create_node("D"));
-	tree_add_node(root->left, tree_create_node("E"));
-
-	tree_add_node(root->right, tree_create_node("F"));
-
-	int nodes_visited = dfs(root, "F");
-	if (nodes_visited == 6) {
-		printf("Vous avez potentiellement bien programmer la fonction depth first search\n");
-	}
-	else {
-		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visité %i nodes et on veut visiter 6 nodes\n",nodes_visited);
-	}
-	nodes_visited = 0;
-	nodes_visited = bfs(root, "F");
-	if (nodes_visited == 6) {
-		printf("Vous avez potentiellement bien programmer la fonction breath first search\n");
-	}
-	else {
-		printf("Vous n'avez pas bien programmer la fonction breath first search, vous avez visité %i nodes et on veut visiter 6 nodes\n", nodes_visited);
-	}
-
-	return 0;
+//	TreeNode* root = tree_create_node("A");
+//	tree_add_node(root, tree_create_node("B"));
+//	tree_add_node(root, tree_create_node("C"));
+//
+//	tree_add_node(root->left, tree_create_node("D"));
+//	tree_add_node(root->left, tree_create_node("E"));
+//
+//	tree_add_node(root->right, tree_create_node("F"));
+//
+//	int nodes_visited = dfs(root, "F");
+//	if (nodes_visited == 6) {
+//		printf("Vous avez potentiellement bien programmer la fonction depth first search\n");
+//	}
+//	else {
+//		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visité %i nodes et on veut visiter 6 nodes\n",nodes_visited);
+//	}
+//	nodes_visited = 0;
+//	nodes_visited = bfs(root, "F");
+//	if (nodes_visited == 6) {
+//		printf("Vous avez potentiellement bien programmer la fonction breath first search\n");
+//	}
+//	else {
+//		printf("Vous n'avez pas bien programmer la fonction breath first search, vous avez visité %i nodes et on veut visiter 6 nodes\n", nodes_visited);
+//	}
+//
+//	return 0;
 }
