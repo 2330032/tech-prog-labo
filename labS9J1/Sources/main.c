@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
 		printf("Vous avez potentiellement bien programmer la fonction depth first search\n");
 	}
 	else {
-		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visité %i nodes et on veut visiter 6 nodes\n",nodes_visited);
+		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visiter %i nodes et on veut visiter 6 nodes\n",nodes_visited);
 	}
 
 	//-----------THIRD CHECK-----------
@@ -136,7 +136,7 @@ int main(int argc, char** argv) {
 		printf("Vous avez potentiellement bien programmer la fonction depth first search\n");
 	}
 	else {
-		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visité %i nodes et on veut visiter 6 nodes\n", nodes_visited);
+		printf("Vous n'avez pas bien programmer la fonction depth first search, vous avez visiter %i nodes et on veut visiter 6 nodes\n", nodes_visited);
 	}
 	for (int i = 0; i < len; ++i) {
 		list[i]->visited = 0;
@@ -179,7 +179,7 @@ int main(int argc, char** argv) {
 		printf("Vous avez potentiellement bien programmer la fonction breath first search\n");
 	}
 	else {
-		printf("Vous n'avez pas bien programmer la fonction breath first search, vous avez visité %i nodes et on veut visiter 6 nodes\n", nodes_visited);
+		printf("Vous n'avez pas bien programmer la fonction breath first search, vous avez visiter %i nodes et on veut visiter 6 nodes\n", nodes_visited);
 	}
 	
 	for (int i = 0; i < len; ++i) {
