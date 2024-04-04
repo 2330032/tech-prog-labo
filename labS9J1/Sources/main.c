@@ -11,14 +11,12 @@ Stack stack_init(size_t max_size) {
 	s.elements = allocate(sizeof(void*) * s.max);
 	return s;
 }
-
 void stack_push(Stack* s, void* element) {
 	if (s->max != s->top + 1) {
 		s->top++;
 		s->elements[s->top] = element;
 	}
 }
-
 void* stack_pop(Stack* s) {
 	if (s->top > -1) {
 		void* elem = s->elements[s->top];
