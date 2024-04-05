@@ -42,6 +42,35 @@ void add_adjacent_node(Node* root, Node* node)
 
 int dfs(Node* root[], int len, Node* curr, void* key, Stack* s)
 {
+	if (curr == NULL)
+	{
+		int found = 0;
+		for (int i = 0; i < len; i++)
+		{
+			found = dfs(root, len, root[i], key, s);
+
+			if (found != 0)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		curr->visited = 1;
+		stack_push(s, curr);
+		if(curr->data == key)
+		{
+			return 1;
+		}
+		else 
+		{
+			for(int j = 0; j < curr->len; j++)
+			{
+				
+			}
+		}
+	}
 
 }
 
@@ -55,5 +84,5 @@ int dfs(Node* root[], int len, Node* curr, void* key, Stack* s)
 
 int bfs(Node* root[], void* key, Stack* s)
 {
-    
+
 }
