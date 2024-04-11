@@ -20,6 +20,7 @@ Node* create_node(void* data)
 	n->visited = 0;
 	n->len = 0;
 	n->revPath = allocate(sizeof(QNode));
+	n->revPath->data = n;
 	n->revPath->prev = NULL;
 
 	return n;
@@ -44,34 +45,41 @@ int dfs(Node* root[], int len, Node* curr, void* key, Stack* s)
 {
 	if (curr == NULL)
 	{
-		int found = 0;
 		for (int i = 0; i < len; i++)
 		{
-			found = dfs(root, len, root[i], key, s);
+			Node* n = root[1];
+			int result = dfs(root, len, root[i], key, s);
 
-			if (found != 0)
+			if (result)
 			{
-				break;
+				return result;
 			}
 		}
+		return 0;
 	}
 	else
 	{
 		curr->visited = 1;
 		stack_push(s, curr);
-		if(curr->data == key)
+		if (curr->data == key)
 		{
 			return 1;
 		}
-		else 
+		for (int j = 0; j < curr->len; j++)
 		{
-			for(int j = 0; j < curr->len; j++)
+			Node* n = curr->adj[j];
+			if (!n->visited)
 			{
-				
+				int result = dfs(root, len, n, key, s);
+				if (result)
+				{
+					return result;
+				}
 			}
 		}
+		stack_pop(s);
+		return 0;
 	}
-
 }
 
 /*
@@ -84,5 +92,42 @@ int dfs(Node* root[], int len, Node* curr, void* key, Stack* s)
 
 int bfs(Node* root[], void* key, Stack* s)
 {
+	Queue q;
+	queue_init(&q);
+	queue_push(&q, root[0]);
 
+	while (q.prev != NULL)
+	{
+		Node* n = queue_pop(&q);
+		int end = 0;
+		for (int i = 0; i < n->len; i++)
+		{
+			Node* n_adj = n->adj[i];
+			if (!n_adj->visited)
+			{
+				n_adj->visited = 1;
+				queue_push(&q, n_adj);
+				n_adj->revPath->prev = n->revPath;
+			}
+			if (n_adj->data == key)
+			{
+				end = 1;
+				break;
+			}
+		}
+		if (end) 
+		{
+			break;
+		}
+	}
+	Node* lastNode = q.next->data;
+	stack_push(s, lastNode);
+	QNode* nq = lastNode->revPath->prev;
+	while (nq != NULL) 
+	{
+		lastNode = nq->data;
+		stack_push(s, lastNode);
+		nq = lastNode->revPath->prev;
+	}
+	return s->top;
 }
