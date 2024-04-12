@@ -10,9 +10,15 @@
 void* allocate(size_t size);
 
 /*
-* Vous definir une struct nommer HashTable. Elle va contenir une liste de void* sous le nom de data.
+* Vous definir une struct nommer HashTable. 
+* Elle va contenir une liste de void* sous le nom de data.
 * Elle va contenir aussi une propriete nommer max_size de type size_t.
 */
+
+typedef struct {
+	void* data;
+	size_t max_size;
+};
 
 typedef struct{
 	void** data;
