@@ -128,7 +128,7 @@ int main(int argc, char** argv) {
 	{
 		Vector2 pos = { .x = -9.0,.y = 11.0 };
 		add_node(graph, "H", pos);//7
-		//add_edge(graph, 3, 4, 1);
+		add_edge(graph, 3, 4, 1);
 		add_edge(graph, 7, 8, 8);
 		add_edge(graph, 7, 9, 2);
 	}
